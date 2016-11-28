@@ -11,14 +11,6 @@ div#header {
     padding: 12px 0px 12px 0px;
 }
 
-div#logo a {
-    color: black;
-    float: left;
-    font-size: 18px;
-    font-weight: bold;
-    text-decoration: none;
-}
-
 div#header #navigation {
     text-align: right;
 }
@@ -41,16 +33,7 @@ div#footer {
     text-align: right;
 }
 
-h1 {
-    font-size: 24px;
-}
-
-h2 {
-    font-size: 20px;
-}
-
-div.info {
-    color: #555;
-    font-size: 14px;
-    font-style: italic;
+.posts {
+    list-style-type: none;
+    font-family: "Courier New", Courier, monospace
 }
