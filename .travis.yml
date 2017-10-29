@@ -1,0 +1,47 @@
+sudo: false
+
+cache:
+  directories:
+  - $HOME/.stack
+
+cache:
+  directories:
+  - $HOME/.stack
+  - .stack-work
+
+before_install:
+  - mkdir -p ~/.local/bin
+  - export PATH=$HOME/.local/bin:$PATH
+  - travis_retry curl -L https://www.stackage.org/stack/linux-x86_64 | tar xz --wildcards --strip-components=1 -C ~/.local/bin '*/stack'
+
+install:
+  - stack --no-terminal --skip-ghc-check setup
+
+script:
+  - stack --no-terminal --skip-ghc-check build
+  - stack --no-terminal --skip-ghc-check exec site build
+
+before_deploy:
+  - pip install --user awscli
+
+deploy:
+  on:
+    branch: master
+  provider: s3
+  access_key_id: $AWS_ACCESS_KEY_ID
+  secret_access_key: $AWS_SECRET_ACCESS_KEY
+  region: $AWS_DEFAULT_REGION
+  bucket: tomtomnoodlehouse
+  # Prevent Travis from deleting your built site so it can be uploaded.
+  skip_cleanup: true
+  # Path to a directory containing your built site.
+  local_dir: _site
+
+after_deploy:
+  # Allow `awscli` to make requests to CloudFront.
+  - aws configure set preview.cloudfront true
+  # Invalidate every object in the targeted distribution.
+  - aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_DISTRIBUTION_ID --paths "/*"
+
+notifications:
+  email: false
