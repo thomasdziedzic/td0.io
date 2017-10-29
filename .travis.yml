@@ -1,13 +1,10 @@
 sudo: false
 
-cache:
-  directories:
-  - $HOME/.stack
+language: generic
 
 cache:
   directories:
   - $HOME/.stack
-  - .stack-work
 
 before_install:
   - mkdir -p ~/.local/bin
