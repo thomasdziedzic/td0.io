@@ -1,9 +1,10 @@
 {-# LANGUAGE OverloadedStrings #-}
-import           Data.Monoid (mappend)
-import           Hakyll
+import Data.Monoid (mappend)
+import Hakyll
+import Hakyll.Core.Configuration
 
 main :: IO ()
-main = hakyll $ do
+main = hakyllWith configuration $ do
     match "css/*" $ do
         route   idRoute
         compile compressCssCompiler
@@ -35,3 +36,6 @@ postCtx :: Context String
 postCtx =
     dateField "date" "%Y %m %d" `mappend`
     defaultContext
+
+configuration :: Configuration
+configuration = defaultConfiguration { previewHost = "0.0.0.0" }
