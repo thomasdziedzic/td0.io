@@ -28,7 +28,7 @@ deploy:
   access_key_id: $AWS_ACCESS_KEY_ID
   secret_access_key: $AWS_SECRET_ACCESS_KEY
   region: $AWS_DEFAULT_REGION
-  bucket: tomtomnoodlehouse
+  bucket: td0.io
   # Prevent Travis from deleting your built site so it can be uploaded.
   skip_cleanup: true
   # Path to a directory containing your built site.
