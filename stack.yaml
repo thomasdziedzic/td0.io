@@ -15,6 +15,8 @@
 # resolver:
 #  name: custom-snapshot
 #  location: "./custom-snapshot.yaml"
+# NOTE do not update the resolver until stack gets updated to 1.9.1
+# see https://github.com/commercialhaskell/stack/issues/4071
 resolver: lts-12.6
 
 # User packages to be built.
