@@ -11,7 +11,7 @@ After briefly looking through the code, I decided to contribute by shaving off t
 Upgrading the rails version from 5.1 to 5.2.
 This post is about my experience performing that upgrade.
 
-# Planning 
+# Planning
 
 The first thing that I wanted to do was skim the codebase for anything that stuck out as a potential flag.
 The directory layout seemed pretty standard, and it had tests!
@@ -22,7 +22,7 @@ I've heard that you want to upgrade a rails codebase by incrementally upgrading 
 
 In addition to familiarizing myself with the general structure and quality of the codebase, I also went through a couple of resources on upgrading rails.
 Some great resources that I found were the
-[official rails upgrade guide](https://guides.rubyonrails.org/upgrading_ruby_on_rails.html#upgrading-from-rails-5-1-to-rails-5-2), 
+[official rails upgrade guide](https://guides.rubyonrails.org/upgrading_ruby_on_rails.html#upgrading-from-rails-5-1-to-rails-5-2),
 [rails 5.2 release notes](https://guides.rubyonrails.org/5_2_release_notes.html#upgrading-to-rails-5-2),
 and a [blog post by Ombulabs](https://www.ombulabs.com/blog/rails/upgrades/upgrade-rails-from-5-1-to-5-2.html).
 
