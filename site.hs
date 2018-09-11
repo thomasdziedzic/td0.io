@@ -30,6 +30,13 @@ main = hakyllWith configuration $ do
                 >>= loadAndApplyTemplate "templates/default.html" indexCtx
                 >>= relativizeUrls
 
+    match "contact.html" $ do
+        route idRoute
+        compile $ do
+            getResourceBody
+                >>= loadAndApplyTemplate "templates/default.html" defaultContext
+                >>= relativizeUrls
+
     match "templates/*" $ compile templateBodyCompiler
 
 postCtx :: Context String
