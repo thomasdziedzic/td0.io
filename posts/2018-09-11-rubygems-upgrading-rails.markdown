@@ -2,25 +2,25 @@
 title: "Rubygems.org: Upgrading Rails to 5.2"
 ---
 
-# Overview
+## Overview
 
 After [upgrading lobste.rs](/posts/2018-08-21-lobsters-upgrading-rails.html), I decided to upgrade [rubygems.org](rubygems.org).
 I wanted to contribute because I felt that the lobste.rs upgrade went relatively smoothly and I felt that I can take on another similar project.
 I looked through the codebase and the setup was very similar to lobste.rs; it included a good testsuite, and it was on rails 5.1 so it only needed a minor bump.
 
-# Planning
+## Planning
 
 Since I previously performed a successful rails 5.1 to 5.2 upgrade, I wasn't too worried about planning.
 The plan I had was to just perform the initial upgrade and fix any test failures.
 
-# Beginning the upgrade
+## Beginning the upgrade
 
 Just like I did with the lobste.rs upgrade, I started by upgrading the rails gem.
 The next step was to run `bundle exec rails app:update` to get the latest configurations available from rails 5.2.
 While merging back all the changes that were reverted by running the update command, I did a commit per file to give me checkpoints along the way.
 In my opinion, each file change should be a commit so that the history could be easily navigated.
 
-# Test failures
+## Test failures
 
 After performing the initial upgrade, I ran the tests and was welcomed with a lot of test failures.
 I got a little bit discouraged by the upgrade at this point.
@@ -33,7 +33,7 @@ After git blaming, I found that it was related to [https://github.com/rails/rail
 So the cause of the test failures was due to rails 5.2.1 breaking backwards compatibility!
 Luckily the [fix for the break was easy](https://github.com/rubygems/rubygems.org/pull/1771/commits/c01be79670dd2323ab9abf6f202fa23d4970dcaa).
 
-# Wrapping up the upgrade
+## Wrapping up the upgrade
 
 After fixing all the tests there was still work to be done.
 This included cleaning up the [deprecation noise](https://github.com/rubygems/rubygems.org/pull/1771/commits/75523b6275d6ce7d9c6fc008c3273d54fb01c2cf) to future proof the code.
@@ -41,7 +41,7 @@ I also encountered more test failures, but this was due to rubocop, so I went ah
 Finally, just like the rails upgrade for lobste.rs, I found out that the previous default configuration options didn't get migrated.
 I opened an [issue](https://github.com/rubygems/rubygems.org/issues/1773) to track this for future work.
 
-# Conclusion
+## Conclusion
 
 The [pull request](https://github.com/rubygems/rubygems.org/pull/1771) is still open, but I consider this a success.
 The initial upgrade went as expected, just like the lobste.rs upgrade.
